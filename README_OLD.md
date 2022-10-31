@@ -23,23 +23,6 @@ bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/misc/post-pve-i
 It's recommended to answer `y` to all options.
 
 ____________________________________________________________________________________________ 
-
-</details>
-
-<details>
-<summary markdown="span"> Proxmox Kernel Clean</summary>
- 
-<p align="center"><img src="https://github.com/home-assistant/brands/blob/master/core_integrations/proxmoxve/icon.png?raw=true" height="100"/></p>
-
-<h1 align="center" id="heading">Proxmox Kernel Clean </h1>
-
-Cleaning unused kernel images is not only good because of a reduced grub menu, but also gains some disk space.
- 
-Run the following in the Proxmox Shell.
-
-```yaml
-bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/misc/kernel-clean.sh)"
-```
 ____________________________________________________________________________________________ 
 
 </details>
