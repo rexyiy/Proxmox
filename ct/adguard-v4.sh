@@ -52,6 +52,8 @@ function header_info {
             /____/                           
 ${CL}"
 }
+
+
 function msg_info() {
   local msg="$1"
   echo -ne " ${HOLD} ${YW}${msg}..."
@@ -77,6 +79,23 @@ function default_settings() {
   echo -e "${DGN}Using Container ID: ${BGN}$NEXTID${CL}"
   CT_ID=$NEXTID
   echo -e "${DGN}Using Hostname: ${BGN}$NSAPP${CL}"
+  HN=$NSAPP
+  echo -e "${DGN}Using Disk Size: ${BGN}$var_disk${CL}${DGN}GB${CL}"
+  DISK_SIZE="$var_disk"
+  echo -e "${DGN}Allocated Cores ${BGN}$var_cpu${CL}"
+  CORE_COUNT="$var_cpu"
+  echo -e "${DGN}Allocated Ram ${BGN}$var_ram${CL}"
+  RAM_SIZE="$var_ram"
+  echo -e "${DGN}Using Bridge: ${BGN}vmbr0${CL}"
+  BRG="vmbr0"
+  echo -e "${DGN}Using Static IP Address: ${BGN}dhcp${CL}"
+  NET=dhcp
+  echo -e "${DGN}Using Gateway Address: ${BGN}Default${CL}"
+  GATE=""
+  echo -e "${DGN}Using MAC Address: ${BGN}Default${CL}"
+  MAC=""
+  echo -e "${DGN}Using VLAN Tag: ${BGN}Default${CL}"
+  VLAN=""
   HN=$NSAPP
   echo -e "${DGN}Using Disk Size: ${BGN}$var_disk${CL}${DGN}GB${CL}"
   DISK_SIZE="$var_disk"
