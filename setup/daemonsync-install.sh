@@ -19,6 +19,43 @@ shopt -s expand_aliases
 alias die='EXIT=$? LINE=$LINENO error_exit'
 trap die ERR
 
+msg_info "Updating Container OS"
+apt-get update &>/dev/null
+apt-get -y upgrade &>/dev/null
+msg_ok "Updated Container OS"
+
+msg_info "Installing Dependencies"
+apt-get install -y curl &>/dev/null
+apt-get install -y sudo &>/dev/null
+apt-get install -y git &>/dev/null
+msg_ok "Installed Dependencies"
+
+msg_info "Setting up Node.js Repository"
+sudo curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash - &>/dev/null
+msg_ok "Set up Node.js Repository"
+
+msg_info "Installing Node.js"
+sudo apt-get install -y nodejs git make g++ gcc &>/dev/null
+msg_ok "Installed Node.js"
+
+msg_info "Installing Yarn"
+npm install --global yarn &>/dev/null
+msg_ok "Installed Yarn"
+
+msg_info "Installing Dashy (Patience)"
+git clone https://github.com/Lissy93/dashy.git &>/dev/null
+cd /dashy
+yarn &>/dev/null
+export NODE_OPTIONS=--max-old-space-size=1000 &>/dev/null
+yarn build &>/dev/null
+msg_ok "Installed Dashy"
+
+msg_info "Creating Service"
+cat <<EOF >/etc/systemd/system/dashy.service
+[Unit]
+Description=dashy
+
+
 function error_exit() {
   trap - ERR
   local reason="Unknown failure occurred."
